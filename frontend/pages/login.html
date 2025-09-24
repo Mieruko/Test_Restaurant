@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Login</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+  <h1>Đăng nhập</h1>
+  <form id="loginForm">
+    <input type="text" id="username" placeholder="Tên đăng nhập" required />
+    <input type="password" id="password" placeholder="Mật khẩu" required />
+    <button type="submit">Đăng nhập</button>
+  </form>
+
+  <p id="result"></p>
+
+  <script src="../assets/js/api.js"></script>
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      const res = await login(username, password);
+      document.getElementById("result").textContent = res.message || JSON.stringify(res);
+    });
+  </script>
+</body>
+</html>
