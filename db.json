@@ -1,0 +1,9 @@
+{
+  "users": [
+    { "id": 1, "username": "admin", "password": "123", "role": "manager" }
+  ],
+  "menu": [
+    { "id": 1, "tenMon": "Phở bò", "gia": 45000 },
+    { "id": 2, "tenMon": "Coca-Cola", "gia": 15000 }
+  ]
+}

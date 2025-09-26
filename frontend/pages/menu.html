@@ -12,10 +12,10 @@
   <script src="../assets/js/api.js"></script>
   <script>
     window.onload = async () => {
-      const data = await getMenu();
+      const menu = await getMenu();
       const ul = document.getElementById("menuList");
 
-      data.forEach(m => {
+      menu.forEach(m => {
         const li = document.createElement("li");
         li.textContent = `${m.tenMon} - ${m.gia} VNĐ`;
         ul.appendChild(li);

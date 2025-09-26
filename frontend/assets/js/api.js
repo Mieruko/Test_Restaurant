@@ -1,17 +1,19 @@
-// api.js
+const API_URL = "http://localhost:3000";
 
-// Fake login
+// Đăng nhập
 async function login(username, password) {
-  if (username === "admin" && password === "123") {
-    return { message: "Đăng nhập thành công", token: "fake-jwt-token" };
+  const res = await fetch(`${API_URL}/users?username=${username}&password=${password}`);
+  const data = await res.json();
+  if (data.length > 0) {
+    localStorage.setItem("user", JSON.stringify(data[0]));
+    return { success: true, user: data[0] };
+  } else {
+    return { success: false, message: "Sai tài khoản hoặc mật khẩu" };
   }
-  return { message: "Sai tài khoản hoặc mật khẩu" };
 }
 
-// Fake menu
+// Lấy menu
 async function getMenu() {
-  return [
-    { id: 1, tenMon: "Phở bò", gia: 45000 },
-    { id: 2, tenMon: "Coca-Cola", gia: 15000 }
-  ];
+  const res = await fetch(`${API_URL}/menu`);
+  return res.json();
 }
